@@ -16,8 +16,8 @@ configure() {
 
 # Configure modules
 configure "$DOT_MODULE_DIR/bash/bashrc" "$HOME/.bashrc"
-configure "$DOT_MODULE_DIR/tmux/tmux.conf" "$XDG_CONFIG_DIR/tmux/tmux.conf"
-configure "$DOT_MODULE_DIR/i3/i3.conf" "$XDG_CONFIG_DIR/i3/config"
-configure "$DOT_MODULE_DIR/i3status/i3status.conf" "$XDG_CONFIG_DIR/i3status/config"
-configure "$DOT_MODULE_DIR/rofi/config.rasi" "$XDG_CONFIG_DIR/rofi/config.rasi"
-configure "$DOT_MODULE_DIR/rofi/i3.conf" "$XDG_CONFIG_DIR/i3/include/rofi.conf"
+configure "$DOT_MODULE_DIR/tmux/tmux.conf" "$XDG_CONFIG_HOME/tmux/tmux.conf"
+configure "$DOT_MODULE_DIR/i3/i3.conf" "$XDG_CONFIG_HOME/i3/config"
+configure "$DOT_MODULE_DIR/i3status/i3status.conf" "$XDG_CONFIG_HOME/i3status/config"
+configure "$DOT_MODULE_DIR/rofi/config.rasi" "$XDG_CONFIG_HOME/rofi/config.rasi"
+configure "$DOT_MODULE_DIR/rofi/i3.conf" "$XDG_CONFIG_HOME/i3/include/rofi.conf"
