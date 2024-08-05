@@ -14,6 +14,11 @@ configure() {
     cp -v "$1" "$2"
 }
 
+# Configure git
+git config --global user.name "Jaan Tollander de Balsch"
+git config --global user.email "jaan@hey.com"
+git config --global init.defaultbranch "main"
+
 # Configure modules
 configure "$DOT_MODULE_DIR/bash/bashrc" "$HOME/.bashrc"
 configure "$DOT_MODULE_DIR/tmux/tmux.conf" "$XDG_CONFIG_HOME/tmux/tmux.conf"
