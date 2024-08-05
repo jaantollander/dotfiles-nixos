@@ -1,0 +1,158 @@
+# Do not do continue if not running interactively.
+case $- in
+    *i*) ;;
+    *) return 0 ;;
+esac
+
+# Set locale
+#export LC_ALL=C.utf8
+
+# Default prompt
+export PS1="\n\h \w\n\$ "
+
+# Update window size after each command if necessary.
+shopt -s checkwinsize
+
+# Append to history.
+shopt -s histappend
+
+# Ignore duplicates and commands starting with space.
+export HISTCONTROL=ignoreboth
+
+# Set number of commands saved to the history.
+export HISTSIZE=10000
+
+# History time format
+export HISTTIMEFORMAT="%Y-%m-%d %H:%M:%S "
+
+# required for lightline.vim plugin
+#export TERM="xterm-256color"
+
+# Reload current shell
+alias reload='exec $SHELL'
+
+# Preserve aliases when running sudo
+alias sudo='sudo '
+
+# Safer, simulate a real login
+alias su='su -l'
+
+# Colors and human-readable output
+alias diff="diff --color=auto"
+alias grep="grep --color=auto"
+alias fgrep="fgrep --color=auto"
+alias egrep="egrep --color=auto"
+alias ip="ip -color=auto"
+alias df="df -h"
+alias du="du -h"
+
+# Do not allow '>' to truncate existing files, use '>|'
+set -o noclobber
+
+# Prompt before removing files for safer file operations
+alias rm="rm -I"
+alias mv="mv -i"
+alias ln="ln -i"
+alias cp="cp -i"
+
+# File listing
+alias ls='ls --color=auto --group-directories-first -h --time-style="+%Y-%m-%d %H:%M"'
+alias lt="tree --dirsfirst"
+alias l="ls -1"
+alias la="ls -A"
+alias ll="ls -l"
+alias lla="ls -lA"
+
+# Pager
+export LESS="R"
+export PAGER="less"
+
+# Cat
+alias c="cat"
+
+# Desktop opener
+alias open="xdg-open"
+alias o="open"
+
+# Preferred applications
+alias e='${VISUAL:-${EDITOR:-vim}}'
+alias p='${PAGER:-less}'
+alias b='${BROWSER:-w3m}'
+
+# Simple progress bar output for downloaders by default.
+alias curl="curl --progress-bar"
+alias wget="wget --quiet --show-progress"
+
+# Keybindings
+# Clear screen using CTRL+g instead of CTRL+l which is used for tmux
+bind '"\C-g":"clear\n"'
+
+# Test whether command is available
+available() {
+    command -v "$1" > /dev/null
+}
+
+# Serve a directory via HTTP.
+if available python3; then
+    alias http-serve='python3 -m http.server'
+fi
+
+# Enable lesspipe if available
+if available lesspipe; then
+    eval "$(lesspipe)"
+elif available lesspipe.sh; then
+    eval "$(lesspipe.sh)"
+fi
+
+# Use lsd for file listing if available
+if available lsd; then
+    alias ls="lsd"
+    alias lt="lsd --tree"
+fi
+
+# Git
+if available git; then
+    alias gs="git status"
+    alias gd="git diff"
+    alias gdc="git diff --cached"
+    alias ga="git add"
+    alias gc="git commit"
+    alias gp="git push"
+    alias gpl="git pull"
+    alias gch="git checkout"
+    alias gl="git log"
+fi
+
+# Tmux
+if available tmux; then
+    alias tl="tmux ls"
+    alias ta="tmux attach"
+    alias tk="tmux kill-session"
+fi
+
+# Use fd instead of find for fzf if available
+if available fzf && available fd; then
+    export FZF_CTRL_T_COMMAND="fd --hidden --color=always --exclude .git --no-ignore"
+    export FZF_CTRL_T_OPTS="--ansi"
+    export FZF_ALT_C_COMMAND="fd --type directory --color=always --exclude .git --no-ignore"
+    export FZF_ALT_C_OPTS="--ansi"
+fi
+
+# Starship prompt
+if available starship; then
+    eval "$(starship init bash)"
+fi
+
+# Source files on `$HOME/.bash.d` directory.
+if test -d "$HOME/.bash.d"; then
+    for FILE in "$HOME/.bash.d/"*.sh; do
+        test -r "$FILE" && source "$FILE"
+    done
+    for FILE in "$HOME/.bash.d/"*.bash; do
+        test -r "$FILE" && source "$FILE"
+    done
+    unset FILE
+fi
+
+# Clear screen
+clear
