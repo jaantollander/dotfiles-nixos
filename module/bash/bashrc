@@ -74,6 +74,10 @@ alias c="cat"
 alias open="xdg-open"
 alias o="open"
 
+# Editor
+export VISUAL=nvim
+export EDITOR=nvim
+
 # Preferred applications
 alias e='${VISUAL:-${EDITOR:-vim}}'
 alias p='${PAGER:-less}'
@@ -121,6 +125,7 @@ if available git; then
     alias gpl="git pull"
     alias gch="git checkout"
     alias gl="git log"
+    export GIT_SSH_COMMAND="ssh -i $HOME/.ssh/id_ed25519_git"
 fi
 
 # Tmux

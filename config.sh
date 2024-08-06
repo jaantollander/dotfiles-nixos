@@ -1,4 +1,6 @@
 #!/usr/bin/env bash
+set -euo pipefail
+
 export DOT_MODULE_DIR=./module
 
 export XDG_CONFIG_HOME="$HOME/.config"
