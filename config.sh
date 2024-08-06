@@ -17,6 +17,7 @@ git config --global init.defaultbranch "main"
 # Configure modules
 configure "$DOT_MODULE_DIR/bash/bashrc" "$HOME/.bashrc"
 configure "$DOT_MODULE_DIR/neovim/init.vim" "$HOME/.config/nvim/init.vim"
+configure "$DOT_MODULE_DIR/alacritty/alacritty.toml" "$HOME/.config/alacritty/alacritty.toml"
 configure "$DOT_MODULE_DIR/tmux/tmux.conf" "$HOME/.config/tmux/tmux.conf"
 configure "$DOT_MODULE_DIR/i3/i3.conf" "$HOME/.config/i3/config"
 configure "$DOT_MODULE_DIR/i3status/i3status.conf" "$HOME/.config/i3status/config"
