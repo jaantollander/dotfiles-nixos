@@ -3,7 +3,7 @@ set -euo pipefail
 
 export DOT_MODULE_DIR=./module
 
-# Copy source to destination and create directory if it doesn't exist.
+# Copy source ($1) to destination ($2) and create the destination directory if it doesn't exist.
 configure() {
     mkdir -v -p "$(dirname "$2")"
     cp -v "$1" "$2"
