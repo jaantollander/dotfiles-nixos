@@ -82,9 +82,15 @@
     bash
     wget
     neovim
-    pulseaudio
-    bluez
   ];
+
+  # Enable audio
+  hardware.pulseaudio.enable = true;
+  users.extraUsers.jaan.extraGroups = [ "audio" ];
+
+  # Enable bluetooth
+  hardware.bluetooth.enable = true; # enables support for Bluetooth
+  hardware.bluetooth.powerOnBoot = true; # powers up the default Bluetooth controller on boot
 
   fonts.packages = with pkgs; [
     (nerdfonts.override { fonts = [ "Inconsolata" ]; })
@@ -115,6 +121,9 @@
   };
 
   programs.dconf.enable = true;
+
+  services.xserver.videoDrivers = [ "modesetting" ];
+
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
