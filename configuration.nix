@@ -70,6 +70,8 @@
       starship
       firefox
       keepassxc
+      pavucontrol
+      bluetuith
     ];
   };
 
@@ -86,12 +88,17 @@
 
   # Enable audio
   hardware.pulseaudio.enable = true;
+
+  # Enable audio for user
   users.extraUsers.jaan.extraGroups = [ "audio" ];
 
   # Enable bluetooth
-  hardware.bluetooth.enable = true; # enables support for Bluetooth
-  hardware.bluetooth.powerOnBoot = true; # powers up the default Bluetooth controller on boot
+  hardware.bluetooth.enable = true;
 
+  # powers up the default Bluetooth controller on boot
+  hardware.bluetooth.powerOnBoot = true;
+
+  # Install fonts
   fonts.packages = with pkgs; [
     (nerdfonts.override { fonts = [ "Inconsolata" ]; })
   ];
@@ -99,6 +106,7 @@
   # links /libexec from derivations to /run/current-system/sw
   environment.pathsToLink = [ "/libexec" ];
 
+  # Install window manager, status bar and application launcher
   services.xserver = {
     enable = true;
 
@@ -122,8 +130,8 @@
 
   programs.dconf.enable = true;
 
+  # Configure video drivers
   services.xserver.videoDrivers = [ "modesetting" ];
-
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
