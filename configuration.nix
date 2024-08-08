@@ -95,8 +95,8 @@
   # Enable bluetooth
   hardware.bluetooth.enable = true;
 
-  # powers up the default Bluetooth controller on boot
-  hardware.bluetooth.powerOnBoot = true;
+  # Wether to power up the default Bluetooth controller on boot
+  hardware.bluetooth.powerOnBoot = false;
 
   # Install fonts
   fonts.packages = with pkgs; [
