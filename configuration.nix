@@ -72,6 +72,7 @@
       keepassxc
       pavucontrol
       bluetuith
+      brightnessctl
     ];
   };
 
