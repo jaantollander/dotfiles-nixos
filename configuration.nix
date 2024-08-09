@@ -73,6 +73,8 @@
       pavucontrol
       bluetuith
       brightnessctl
+      arandr
+      pciutils
     ];
   };
 
