@@ -1,8 +1,6 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-export DOT_MODULE_DIR=./module
-
 # Copy source ($1) to destination ($2) and create the destination directory if it doesn't exist.
 configure() {
     mkdir -v -p "$(dirname "$2")"
@@ -15,14 +13,14 @@ git config --global user.email "jaan@hey.com"
 git config --global init.defaultbranch "main"
 
 # Configure modules
-configure "$DOT_MODULE_DIR/bash/bashrc" "$HOME/.bashrc"
-configure "$DOT_MODULE_DIR/neovim/init.vim" "$HOME/.config/nvim/init.vim"
-configure "$DOT_MODULE_DIR/alacritty/alacritty.toml" "$HOME/.config/alacritty/alacritty.toml"
-configure "$DOT_MODULE_DIR/tmux/tmux.conf" "$HOME/.config/tmux/tmux.conf"
-configure "$DOT_MODULE_DIR/i3/i3.conf" "$HOME/.config/i3/config"
-configure "$DOT_MODULE_DIR/i3status/i3status.conf" "$HOME/.config/i3status/config"
-configure "$DOT_MODULE_DIR/rofi/config.rasi" "$HOME/.config/rofi/config.rasi"
-configure "$DOT_MODULE_DIR/rofi/i3.conf" "$HOME/.config/i3/include/rofi.conf"
-configure "$DOT_MODULE_DIR/pulseaudio/i3.conf" "$HOME/.config/i3/include/pulseaudio.conf"
-configure "$DOT_MODULE_DIR/brightnessctl/i3.conf" "$HOME/.config/i3/include/brightnessctl.conf"
-configure "$DOT_MODULE_DIR/lsd/lsd.yaml" "$HOME/.config/lsd/config.yaml"
+configure "./module/bash/bashrc" "$HOME/.bashrc"
+configure "./module/neovim/init.vim" "$HOME/.config/nvim/init.vim"
+configure "./module/alacritty/alacritty.toml" "$HOME/.config/alacritty/alacritty.toml"
+configure "./module/tmux/tmux.conf" "$HOME/.config/tmux/tmux.conf"
+configure "./module/i3/i3.conf" "$HOME/.config/i3/config"
+configure "./module/i3status/i3status.conf" "$HOME/.config/i3status/config"
+configure "./module/rofi/config.rasi" "$HOME/.config/rofi/config.rasi"
+configure "./module/rofi/i3.conf" "$HOME/.config/i3/include/rofi.conf"
+configure "./module/pulseaudio/i3.conf" "$HOME/.config/i3/include/pulseaudio.conf"
+configure "./module/brightnessctl/i3.conf" "$HOME/.config/i3/include/brightnessctl.conf"
+configure "./module/lsd/lsd.yaml" "$HOME/.config/lsd/config.yaml"
