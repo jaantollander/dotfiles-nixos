@@ -75,6 +75,9 @@
       brightnessctl
       arandr
       pciutils
+      file
+      xclip
+      xsel
     ];
   };
 
